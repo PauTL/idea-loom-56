@@ -23,7 +23,7 @@ const ProjectWorkflowStepper = ({ currentStep }: Props) => {
     <div className="w-full px-8 py-4">
       <div className="flex items-center w-full">
         {steps.map((step, i) => (
-          <div key={step.label} className="flex items-center flex-1 last:flex-initial">
+          <div key={step.label} className="flex items-center flex-1">
             <div className="flex flex-col items-center gap-1.5">
               <div
                 className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
