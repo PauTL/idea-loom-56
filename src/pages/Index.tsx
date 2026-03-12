@@ -1,10 +1,10 @@
+import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import TopBar from "@/components/TopBar";
 import WorkflowStepper from "@/components/WorkflowStepper";
 import InstructionCard from "@/components/InstructionCard";
 import SidebarFilters from "@/components/SidebarFilters";
 import ModerationTable from "@/components/ModerationTable";
-import { Badge } from "@/components/ui/badge";
 import { Lightbulb, Settings, Shield } from "lucide-react";
 
 const tabs = [
@@ -16,6 +16,8 @@ const tabs = [
 ];
 
 const Index = () => {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <div className="flex min-h-screen bg-background">
       <Sidebar />
@@ -61,16 +63,14 @@ const Index = () => {
 
         {/* Content */}
         <div className="flex-1 flex">
-          {/* Left filters */}
           <div className="border-r border-border bg-card p-4">
             <SidebarFilters />
           </div>
 
-          {/* Main content */}
           <div className="flex-1 p-6 space-y-6 overflow-auto">
-            <WorkflowStepper />
-            <InstructionCard />
-            <ModerationTable />
+            <WorkflowStepper activeStep={activeStep} onStepChange={setActiveStep} />
+            <InstructionCard activeStep={activeStep} />
+            <ModerationTable activeStep={activeStep} />
           </div>
         </div>
       </div>

@@ -2,7 +2,32 @@ import { Search, Download, FileText, Filter, CalendarDays, ChevronDown } from "l
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
-const ModerationTable = () => {
+const stepColumns: Record<number, string[]> = {
+  0: ["ID", "Création", "Auteur", "Titre", "Statut", "Actions"],
+  1: ["ID", "Création", "Auteur", "Titre", "Catégorie", "Étape", "Actions"],
+  2: ["ID", "Auteur", "Création", "Titre", "ROI", "Actions"],
+  3: ["ID", "Création", "Auteur", "Titre", "Statut", "Évalué par", "Actions"],
+  4: ["ID", "Création", "Auteur", "Titre", "Objectifs", "Actions"],
+  5: ["ID", "Création", "Auteur", "Titre", "Statut", "Actions"],
+};
+
+const stepFilters: Record<number, string[]> = {
+  0: ["Catégories"],
+  1: ["Catégories"],
+  2: ["Catégories"],
+  3: ["Statut d'évaluation", "Catégories"],
+  4: ["Catégories"],
+  5: ["Catégories"],
+};
+
+interface Props {
+  activeStep: number;
+}
+
+const ModerationTable = ({ activeStep }: Props) => {
+  const columns = stepColumns[activeStep] || stepColumns[0];
+  const filters = stepFilters[activeStep] || stepFilters[0];
+
   return (
     <div className="space-y-4">
       {/* Filters row */}
@@ -12,10 +37,12 @@ const ModerationTable = () => {
             <Filter size={14} />
             <span>Filtrer par</span>
           </div>
-          <button className="h-9 px-3 rounded-lg border border-border bg-card text-sm text-muted-foreground flex items-center gap-2 hover:border-primary/30 transition-colors">
-            Catégories
-            <ChevronDown size={14} />
-          </button>
+          {filters.map((f) => (
+            <button key={f} className="h-9 px-3 rounded-lg border border-border bg-card text-sm text-muted-foreground flex items-center gap-2 hover:border-primary/30 transition-colors">
+              {f}
+              <ChevronDown size={14} />
+            </button>
+          ))}
         </div>
 
         <div className="flex items-center gap-2">
@@ -65,17 +92,16 @@ const ModerationTable = () => {
               <th className="w-12 px-4 py-3">
                 <Checkbox />
               </th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">ID</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Création</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Auteur</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Titre</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Statut</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Actions</th>
+              {columns.map((col) => (
+                <th key={col} className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  {col}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td colSpan={7} className="py-16 text-center">
+              <td colSpan={columns.length + 1} className="py-16 text-center">
                 <div className="flex flex-col items-center gap-2 text-muted-foreground">
                   <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
                     <Search size={18} />
