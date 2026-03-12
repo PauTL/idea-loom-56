@@ -1,8 +1,69 @@
 import { ClipboardCheck, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-const InstructionCard = () => {
+interface StepInstruction {
+  title: string;
+  steps: { n: string; text: React.ReactNode }[];
+}
+
+const stepInstructions: Record<number, StepInstruction> = {
+  0: {
+    title: "Le projet proposé est-il recevable ?",
+    steps: [
+      { n: "1", text: <>Examinez le projet et décidez de <strong className="text-foreground font-medium">l'accepter</strong> ou de <strong className="text-foreground font-medium">le refuser</strong>.</> },
+      { n: "2", text: <>Besoin de modifications ? Cliquez sur <strong className="text-foreground font-medium">"Demander des changements"</strong>.</> },
+      { n: "3", text: <>L'auteur sera notifié des changements à apporter.</> },
+    ],
+  },
+  1: {
+    title: "Associez les catégories aux projets",
+    steps: [
+      { n: "1", text: <>Indiquez la ou les <strong className="text-foreground font-medium">catégories</strong> que vous souhaitez associer au projet proposé.</> },
+      { n: "2", text: <>Vous pouvez choisir une catégorie existante ou <strong className="text-foreground font-medium">en créer une nouvelle</strong>.</> },
+      { n: "3", text: <>Pensez à <strong className="text-foreground font-medium">"enregistrer les catégories"</strong> avant de valider le passage à l'étape suivante.</> },
+    ],
+  },
+  2: {
+    title: "Indiquer le ROI",
+    steps: [
+      { n: "1", text: <>Estimez le <strong className="text-foreground font-medium">retour sur investissement</strong> attendu pour chaque projet.</> },
+      { n: "2", text: <>Renseignez les <strong className="text-foreground font-medium">coûts estimés</strong> et les <strong className="text-foreground font-medium">bénéfices prévisionnels</strong>.</> },
+      { n: "3", text: <>Validez vos estimations pour passer à l'étape suivante.</> },
+    ],
+  },
+  3: {
+    title: "Évaluez collectivement les projets",
+    steps: [
+      { n: "1", text: <>Chaque membre du comité attribue une <strong className="text-foreground font-medium">note</strong> basée sur les critères d'évaluation définis.</> },
+      { n: "2", text: <>Vérifiez que <strong className="text-foreground font-medium">chaque membre a bien enregistré sa note</strong> avant de valider.</> },
+      { n: "3", text: <>À l'étape suivante, vous pourrez voir la <strong className="text-foreground font-medium">moyenne des notes</strong> attribuées.</> },
+    ],
+  },
+  4: {
+    title: "Définissez les objectifs du projet",
+    steps: [
+      { n: "1", text: <>Associez des <strong className="text-foreground font-medium">objectifs stratégiques</strong> à chaque projet sélectionné.</> },
+      { n: "2", text: <>Vous pouvez définir des <strong className="text-foreground font-medium">indicateurs de suivi</strong> pour mesurer l'atteinte des objectifs.</> },
+      { n: "3", text: <>Enregistrez vos objectifs avant de passer à la publication.</> },
+    ],
+  },
+  5: {
+    title: "Publiez les projets validés",
+    steps: [
+      { n: "1", text: <>Les projets listés ici sont <strong className="text-foreground font-medium">prêts à être publiés</strong> et visibles par tous.</> },
+      { n: "2", text: <>Vous pouvez choisir de <strong className="text-foreground font-medium">publier</strong> un projet ou de le <strong className="text-foreground font-medium">renvoyer</strong> aux étapes précédentes.</> },
+      { n: "3", text: <>Une fois publié, le projet sera soumis au <strong className="text-foreground font-medium">soutien des collaborateurs</strong>.</> },
+    ],
+  },
+};
+
+interface Props {
+  activeStep: number;
+}
+
+const InstructionCard = ({ activeStep }: Props) => {
   const [expanded, setExpanded] = useState(false);
+  const instruction = stepInstructions[activeStep] || stepInstructions[0];
 
   return (
     <div className="rounded-lg border border-instruction-border bg-instruction-bg">
@@ -14,7 +75,7 @@ const InstructionCard = () => {
           <ClipboardCheck size={15} className="text-instruction-icon" />
         </div>
         <span className="text-sm font-semibold text-foreground flex-1">
-          Le projet proposé est-il recevable ?
+          {instruction.title}
         </span>
         <ChevronDown
           size={16}
@@ -24,11 +85,7 @@ const InstructionCard = () => {
 
       {expanded && (
         <div className="px-4 pb-3 flex gap-6 pl-14">
-          {[
-            { n: "1", text: <>Examinez le projet et décidez de <strong className="text-foreground font-medium">l'accepter</strong> ou de <strong className="text-foreground font-medium">le refuser</strong>.</> },
-            { n: "2", text: <>Besoin de modifications ? Cliquez sur <strong className="text-foreground font-medium">"Demander des changements"</strong>.</> },
-            { n: "3", text: <>L'auteur sera notifié des changements à apporter.</> },
-          ].map((s) => (
+          {instruction.steps.map((s) => (
             <div key={s.n} className="flex items-start gap-2">
               <span className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 text-[9px] font-bold text-primary">{s.n}</span>
               <p className="text-xs text-muted-foreground leading-relaxed">{s.text}</p>
