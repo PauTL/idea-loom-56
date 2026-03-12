@@ -10,49 +10,49 @@ const stepInstructions: Record<number, StepInstruction> = {
   0: {
     title: "Le projet proposé est-il recevable ?",
     steps: [
-      { n: "1", text: <>Examinez le projet et décidez de <strong className="text-foreground font-medium">l'accepter</strong> ou de <strong className="text-foreground font-medium">le refuser</strong>.</> },
-      { n: "2", text: <>Besoin de modifications ? Cliquez sur <strong className="text-foreground font-medium">"Demander des changements"</strong>.</> },
+      { n: "1", text: <>Examinez le projet et décidez de <strong>l'accepter</strong> ou de <strong>le refuser</strong>.</> },
+      { n: "2", text: <>Besoin de modifications ? Cliquez sur <strong>"Demander des changements"</strong>.</> },
       { n: "3", text: <>L'auteur sera notifié des changements à apporter.</> },
     ],
   },
   1: {
     title: "Associez les catégories aux projets",
     steps: [
-      { n: "1", text: <>Indiquez la ou les <strong className="text-foreground font-medium">catégories</strong> que vous souhaitez associer au projet proposé.</> },
-      { n: "2", text: <>Vous pouvez choisir une catégorie existante ou <strong className="text-foreground font-medium">en créer une nouvelle</strong>.</> },
-      { n: "3", text: <>Pensez à <strong className="text-foreground font-medium">"enregistrer les catégories"</strong> avant de valider le passage à l'étape suivante.</> },
+      { n: "1", text: <>Indiquez la ou les <strong>catégories</strong> que vous souhaitez associer au projet proposé.</> },
+      { n: "2", text: <>Vous pouvez choisir une catégorie existante ou <strong>en créer une nouvelle</strong>.</> },
+      { n: "3", text: <>Pensez à <strong>"enregistrer les catégories"</strong> avant de valider le passage à l'étape suivante.</> },
     ],
   },
   2: {
     title: "Indiquer le ROI",
     steps: [
-      { n: "1", text: <>Estimez le <strong className="text-foreground font-medium">retour sur investissement</strong> attendu pour chaque projet.</> },
-      { n: "2", text: <>Renseignez les <strong className="text-foreground font-medium">coûts estimés</strong> et les <strong className="text-foreground font-medium">bénéfices prévisionnels</strong>.</> },
+      { n: "1", text: <>Estimez le <strong>retour sur investissement</strong> attendu pour chaque projet.</> },
+      { n: "2", text: <>Renseignez les <strong>coûts estimés</strong> et les <strong>bénéfices prévisionnels</strong>.</> },
       { n: "3", text: <>Validez vos estimations pour passer à l'étape suivante.</> },
     ],
   },
   3: {
     title: "Évaluez collectivement les projets",
     steps: [
-      { n: "1", text: <>Chaque membre du comité attribue une <strong className="text-foreground font-medium">note</strong> basée sur les critères d'évaluation définis.</> },
-      { n: "2", text: <>Vérifiez que <strong className="text-foreground font-medium">chaque membre a bien enregistré sa note</strong> avant de valider.</> },
-      { n: "3", text: <>À l'étape suivante, vous pourrez voir la <strong className="text-foreground font-medium">moyenne des notes</strong> attribuées.</> },
+      { n: "1", text: <>Chaque membre du comité attribue une <strong>note</strong> basée sur les critères d'évaluation définis.</> },
+      { n: "2", text: <>Vérifiez que <strong>chaque membre a bien enregistré sa note</strong> avant de valider.</> },
+      { n: "3", text: <>À l'étape suivante, vous pourrez voir la <strong>moyenne des notes</strong> attribuées.</> },
     ],
   },
   4: {
     title: "Définissez les objectifs du projet",
     steps: [
-      { n: "1", text: <>Associez des <strong className="text-foreground font-medium">objectifs stratégiques</strong> à chaque projet sélectionné.</> },
-      { n: "2", text: <>Vous pouvez définir des <strong className="text-foreground font-medium">indicateurs de suivi</strong> pour mesurer l'atteinte des objectifs.</> },
+      { n: "1", text: <>Associez des <strong>objectifs stratégiques</strong> à chaque projet sélectionné.</> },
+      { n: "2", text: <>Vous pouvez définir des <strong>indicateurs de suivi</strong> pour mesurer l'atteinte des objectifs.</> },
       { n: "3", text: <>Enregistrez vos objectifs avant de passer à la publication.</> },
     ],
   },
   5: {
     title: "Publiez les projets validés",
     steps: [
-      { n: "1", text: <>Les projets listés ici sont <strong className="text-foreground font-medium">prêts à être publiés</strong> et visibles par tous.</> },
-      { n: "2", text: <>Vous pouvez choisir de <strong className="text-foreground font-medium">publier</strong> un projet ou de le <strong className="text-foreground font-medium">renvoyer</strong> aux étapes précédentes.</> },
-      { n: "3", text: <>Une fois publié, le projet sera soumis au <strong className="text-foreground font-medium">soutien des collaborateurs</strong>.</> },
+      { n: "1", text: <>Les projets listés ici sont <strong>prêts à être publiés</strong> et visibles par tous.</> },
+      { n: "2", text: <>Vous pouvez choisir de <strong>publier</strong> un projet ou de le <strong>renvoyer</strong> aux étapes précédentes.</> },
+      { n: "3", text: <>Une fois publié, le projet sera soumis au <strong>soutien des collaborateurs</strong>.</> },
     ],
   },
 };
