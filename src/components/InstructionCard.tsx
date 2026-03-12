@@ -88,7 +88,7 @@ const InstructionCard = ({ activeStep }: Props) => {
           {instruction.steps.map((s) => (
             <div key={s.n} className="flex items-start gap-2">
               <span className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 text-[9px] font-bold text-primary">{s.n}</span>
-              <p className="text-[13px] text-muted-foreground leading-relaxed">{s.text}</p>
+              <p className="text-[13px] text-foreground/70 leading-relaxed">{s.text}</p>
             </div>
           ))}
         </div>
