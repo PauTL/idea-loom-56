@@ -26,7 +26,7 @@ const ProjectWorkflowStepper = ({ currentStep }: Props) => {
         <div className="flex">
           {steps.slice(0, -1).map((_, i) => (
             <div key={i} className="flex-1">
-              <div className={`h-0.5 rounded-full ${i < currentStep ? "bg-step-active" : "bg-step-pending/30"}`} />
+              <div className={`h-0.5 rounded-full ${i < currentStep ? "bg-step-active" : "bg-step-pending"}`} />
             </div>
           ))}
         </div>
