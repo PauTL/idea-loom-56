@@ -5,10 +5,6 @@ import WorkflowStepper from "@/components/WorkflowStepper";
 import InstructionCard from "@/components/InstructionCard";
 import SidebarFilters from "@/components/SidebarFilters";
 import ModerationTable from "@/components/ModerationTable";
-import VersionSwitcher, { type LayoutVersion } from "@/components/VersionSwitcher";
-import KanbanLayout from "@/components/layouts/KanbanLayout";
-import FocusLayout from "@/components/layouts/FocusLayout";
-import WizardLayout from "@/components/layouts/WizardLayout";
 import { Lightbulb, Settings, Shield } from "lucide-react";
 
 const tabs = [
@@ -21,7 +17,6 @@ const tabs = [
 
 const Index = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [layoutVersion, setLayoutVersion] = useState<LayoutVersion>("kanban");
 
   return (
     <div className="flex min-h-screen bg-background">
@@ -33,12 +28,9 @@ const Index = () => {
         {/* Page header */}
         <div className="border-b border-border bg-card">
           <div className="px-6 pt-5 pb-0">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <Lightbulb size={20} className="text-primary" />
-                <h1 className="text-xl font-bold text-foreground">Vos Solutions</h1>
-              </div>
-              <VersionSwitcher version={layoutVersion} onChange={setLayoutVersion} />
+            <div className="flex items-center gap-2 mb-4">
+              <Lightbulb size={20} className="text-primary" />
+              <h1 className="text-xl font-bold text-foreground">Vos Solutions</h1>
             </div>
 
             {/* Tabs */}
@@ -71,28 +63,15 @@ const Index = () => {
 
         {/* Content */}
         <div className="flex-1 flex">
-          {layoutVersion === "kanban" && <KanbanLayout />}
-          {layoutVersion === "focus" && <FocusLayout />}
-          {layoutVersion === "wizard" && (
-            <>
-              <div className="border-r border-border bg-card p-4">
-                <SidebarFilters />
-              </div>
-              <WizardLayout />
-            </>
-          )}
-          {layoutVersion !== "kanban" && layoutVersion !== "focus" && layoutVersion !== "wizard" && (
-            <>
-              <div className="border-r border-border bg-card p-4">
-                <SidebarFilters />
-              </div>
-              <div className="flex-1 p-6 space-y-6 overflow-auto">
-                <WorkflowStepper activeStep={activeStep} onStepChange={setActiveStep} />
-                <InstructionCard activeStep={activeStep} />
-                <ModerationTable activeStep={activeStep} />
-              </div>
-            </>
-          )}
+          <div className="border-r border-border bg-card p-4">
+            <SidebarFilters />
+          </div>
+
+          <div className="flex-1 p-6 space-y-6 overflow-auto">
+            <WorkflowStepper activeStep={activeStep} onStepChange={setActiveStep} />
+            <InstructionCard activeStep={activeStep} />
+            <ModerationTable activeStep={activeStep} />
+          </div>
         </div>
       </div>
     </div>
