@@ -37,12 +37,12 @@ const ProjectWorkflowStepper = ({ currentStep }: Props) => {
         {steps.map((step, i) => (
           <div key={step.label} className="flex flex-col items-center gap-1.5">
             <div
-              className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all bg-card ${
+              className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                 i < currentStep
-                  ? "!bg-step-active text-primary-foreground"
+                  ? "bg-step-active text-primary-foreground"
                   : i === currentStep
-                  ? "!bg-step-active text-primary-foreground shadow-lg shadow-primary/25 scale-110"
-                  : "!bg-step-pending/40 text-muted-foreground"
+                  ? "bg-step-active text-primary-foreground shadow-lg shadow-primary/25 scale-110"
+                  : "bg-muted text-muted-foreground"
               }`}
             >
               {i < currentStep ? <Check size={14} strokeWidth={3} /> : null}
