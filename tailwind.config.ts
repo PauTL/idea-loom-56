@@ -56,6 +56,20 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+          muted: "hsl(var(--sidebar-muted))",
+        },
+        step: {
+          active: "hsl(var(--step-active))",
+          completed: "hsl(var(--step-completed))",
+          pending: "hsl(var(--step-pending))",
+        },
+        instruction: {
+          bg: "hsl(var(--instruction-bg))",
+          border: "hsl(var(--instruction-border))",
+          icon: "hsl(var(--instruction-icon))",
+        },
+        badge: {
+          count: "hsl(var(--badge-count))",
         },
       },
       borderRadius: {
