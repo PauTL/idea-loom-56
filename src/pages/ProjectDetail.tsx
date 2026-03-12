@@ -27,12 +27,12 @@ const ProjectDetail = () => {
         </div>
 
         {/* Workflow Stepper */}
-        <div className="bg-card border-b border-border">
+        <div className="bg-background pt-6">
           <ProjectWorkflowStepper currentStep={currentStep} />
         </div>
 
         {/* Action buttons */}
-        <div className="flex items-center justify-end gap-2 px-6 py-3 bg-card border-b border-border">
+        <div className="flex items-center justify-end gap-2 px-6 py-4 bg-background">
           <button className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-semibold hover:opacity-90 transition-opacity">
             <FileDown size={14} />
             Exporter en PDF
