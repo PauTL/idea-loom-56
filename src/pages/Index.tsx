@@ -1,11 +1,78 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Sidebar from "@/components/Sidebar";
+import TopBar from "@/components/TopBar";
+import WorkflowStepper from "@/components/WorkflowStepper";
+import InstructionCard from "@/components/InstructionCard";
+import SidebarFilters from "@/components/SidebarFilters";
+import ModerationTable from "@/components/ModerationTable";
+import { Badge } from "@/components/ui/badge";
+import { Lightbulb, Settings, Shield } from "lucide-react";
+
+const tabs = [
+  { label: "VUE D'ENSEMBLE", count: 6 },
+  { label: "LA SÉLECTION", count: 1 },
+  { label: "MON ESPACE", count: 10 },
+  { label: "MODÉRATION", icon: Settings, active: true },
+  { label: "ADMINISTRATION", icon: Shield },
+];
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="flex min-h-screen bg-background">
+      <Sidebar />
+
+      <div className="flex-1 flex flex-col min-w-0">
+        <TopBar />
+
+        {/* Page header */}
+        <div className="border-b border-border bg-card">
+          <div className="px-6 pt-5 pb-0">
+            <div className="flex items-center gap-2 mb-4">
+              <Lightbulb size={20} className="text-primary" />
+              <h1 className="text-xl font-bold text-foreground">Vos Solutions</h1>
+            </div>
+
+            {/* Tabs */}
+            <div className="flex items-center gap-1">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.label}
+                  className={`flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold tracking-wide border-b-2 transition-colors ${
+                    tab.active
+                      ? "border-primary text-primary"
+                      : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
+                  }`}
+                >
+                  {tab.icon && <tab.icon size={14} />}
+                  <span>{tab.label}</span>
+                  {tab.count !== undefined && (
+                    <span className={`w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center ${
+                      tab.active
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-muted-foreground"
+                    }`}>
+                      {tab.count}
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 flex">
+          {/* Left filters */}
+          <div className="border-r border-border bg-card p-4">
+            <SidebarFilters />
+          </div>
+
+          {/* Main content */}
+          <div className="flex-1 p-6 space-y-6 overflow-auto">
+            <WorkflowStepper />
+            <InstructionCard />
+            <ModerationTable />
+          </div>
+        </div>
       </div>
     </div>
   );
