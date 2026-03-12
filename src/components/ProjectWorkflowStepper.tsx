@@ -26,7 +26,7 @@ const ProjectWorkflowStepper = ({ currentStep }: Props) => {
         <div className="flex">
           {steps.slice(0, -1).map((_, i) => (
             <div key={i} className="flex-1">
-              <div className={`h-0.5 rounded-full ${i < currentStep ? "bg-step-active" : "bg-step-pending/30"}`} />
+              <div className={`h-0.5 rounded-full ${i < currentStep ? "bg-step-active" : "bg-step-pending"}`} />
             </div>
           ))}
         </div>
@@ -42,7 +42,7 @@ const ProjectWorkflowStepper = ({ currentStep }: Props) => {
                   ? "bg-step-active text-primary-foreground"
                   : i === currentStep
                   ? "bg-step-active text-primary-foreground shadow-lg shadow-primary/25 scale-110"
-                  : "bg-muted text-muted-foreground"
+                  : "bg-step-pending text-muted-foreground"
               }`}
             >
               {i < currentStep ? <Check size={14} strokeWidth={3} /> : null}
