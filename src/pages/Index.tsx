@@ -5,6 +5,10 @@ import WorkflowStepper from "@/components/WorkflowStepper";
 import InstructionCard from "@/components/InstructionCard";
 import SidebarFilters from "@/components/SidebarFilters";
 import ModerationTable from "@/components/ModerationTable";
+import VersionSwitcher, { type LayoutVersion } from "@/components/VersionSwitcher";
+import KanbanLayout from "@/components/layouts/KanbanLayout";
+import FocusLayout from "@/components/layouts/FocusLayout";
+import WizardLayout from "@/components/layouts/WizardLayout";
 import { Lightbulb, Settings, Shield } from "lucide-react";
 
 const tabs = [
