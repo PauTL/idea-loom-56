@@ -16,11 +16,11 @@ const stepInstructions: Record<number, StepInstruction> = {
     ],
   },
   1: {
-    title: "Associez les catégories aux projets",
+    title: "Attribuez une catégorie et une étiquette aux propositions",
     steps: [
-      { n: "1", text: <>Indiquez la ou les <strong>catégories</strong> que vous souhaitez associer au projet proposé.</> },
-      { n: "2", text: <>Vous pouvez choisir une catégorie existante ou <strong>en créer une nouvelle</strong>.</> },
-      { n: "3", text: <>Pensez à <strong>"enregistrer les catégories"</strong> avant de valider le passage à l'étape suivante.</> },
+      { n: "1", text: <>Sélectionnez ou modifiez la <strong>catégorie</strong> associée à chaque proposition.</> },
+      { n: "2", text: <>Attribuez une <strong>étiquette</strong> pour qualifier ou prioriser la proposition.</> },
+      { n: "3", text: <>Enregistrez vos modifications avant de passer à l'étape suivante.</> },
     ],
   },
   2: {
